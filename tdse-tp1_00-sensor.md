@@ -1,4 +1,5 @@
 Eventos y Acciones del modelo Sensor para describir el comportamiento del módulo de código C.
+
 Estados:
 ST_BTN_UP: el botón no está siendo presionado
 ST_BTN_FALL: el botón está empezando a ser presionado 
