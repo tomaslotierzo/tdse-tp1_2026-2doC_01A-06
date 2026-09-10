@@ -33,12 +33,22 @@ DEL_BARRIER_DEBOUNCE: tiempo que dura la barrera arriba para esperar que el auto
 Tabla de Estados y Excitaciones del modelo System
 
 +-----------------+--------------------+----------+-----------------+--------------------------+
+
 | Current State   | Event              | [Guard]  | Next State      | Actions                  |
+
 +-----------------+--------------------+----------+-----------------+--------------------------+
+
 | ST_NO_HAY_AUTO  | EV_SYS_CAMERA_ON   | -        | ST_HAY_AUTO     | -                        |
+
 | ST_HAY_AUTO     | EV_SYS_BTN_DOWN    | -        | ST_BARRIER_UP   | raise EV_SYS_BARRIER_UP; |
+
 |                 |                    |          |                 | tick = 0                 |
+
 | ST_BARRIER_UP   | every 1 ms         | -        | ST_BARRIER_UP   | tick++                   |
+
 | ST_BARRIER_UP   | -                  | tick == 0| ST_BARRIER_DOWN | raise EV_SYS_BARRIER_DOWN|
+
 | ST_BARRIER_DOWN | EV_NO_HAY_AUTO     | -        | ST_NO_HAY_AUTO  | -                        |
+
 +-----------------+--------------------+----------+-----------------+--------------------------+
+
